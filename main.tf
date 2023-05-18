@@ -208,7 +208,7 @@ resource "aws_instance" "ci_instance" {
 resource "aws_instance" "deployment_instance" {
   ami = "ami-09744628bed84e434"
   instance_type = "t2.micro"
-  key_name = may23
+  key_name = "may23"
   subnet_id = aws_subnet.project_subnet_2.id
   associate_public_ip_address = true
   security_groups = [ aws_security_group.deployment_sg.id ]
@@ -234,5 +234,5 @@ resource "aws_db_instance" "project_rds" {
   parameter_group_name = "default.mysql5.7"
   skip_final_snapshot  = true
   vpc_security_group_ids = [ aws_security_group.rds_sg ]
-  subnet_group_name = aws_db_subnet_group.project_group.name
+  db_subnet_group_name = aws_db_subnet_group.project_group.name
 }
