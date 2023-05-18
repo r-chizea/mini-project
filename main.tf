@@ -159,7 +159,7 @@ resource "aws_security_group" "rds_sg" {
 }
 
 resource "aws_route_table" "project_rt" {
-  vpc_id = aws_vpc.lab4_vpc.id
+  vpc_id = aws_vpc.project_vpc.id
 
   route {
     cidr_block = "0.0.0.0/0"
@@ -196,7 +196,7 @@ resource "aws_internet_gateway" "project_gw" {
 resource "aws_instance" "ci_instance" {
   ami = "ami-09744628bed84e434"
   instance_type = "t2.micro"
-  key_name = may23
+  key_name = "may23"
   subnet_id = aws_subnet.project_subnet_1.id
   associate_public_ip_address = true
   security_groups = [ aws_security_group.ci_sg.id ]
